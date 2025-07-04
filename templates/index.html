@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Password Strength Checker</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Password Strength Checker 🔐</h1>
+      <form method="POST">
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Enter your password..."
+          required
+        />
+        <br />
+        <input type="checkbox" id="show-password" />
+        <label for="show-password">Show Password</label>
+        <br />
+        <button type="submit">Check Strength</button>
+      </form>
+
+      {% if result %}
+      <div class="result">
+        <p><strong>{{ result.message }}</strong></p>
+        <p>Score: {{ result.score }} / 7</p>
+        <p>
+          Strength:
+          <span class="tag {{ result.strength|lower }}"
+            >{{ result.strength }}</span
+          >
+        </p>
+      </div>
+      {% endif %}
+    </div>
+  </body>
+</html>
