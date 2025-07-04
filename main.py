@@ -20,7 +20,7 @@ def index():
         # Check against common passwords
         found_in_common = False
         try:
-            with open('rockyou.1MB.txt', 'r', encoding='utf-8', errors='ignore') as file:
+            with open('rockyou.txt', 'r', encoding='utf-8', errors='ignore') as file:
                 for line in file:
                     if password == line.strip():
                         found_in_common = True
